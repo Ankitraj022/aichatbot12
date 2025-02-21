@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Chatbot</title>
+    <link rel="stylesheet" href="chatbotstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <div class="chatbot-logo">
+
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="chatbot-title">
+                <h2>AI Chatbot</h2>
+                <p>Your Personal Assistant</p>
+            </div>
+        </div>
+        <div class="chatbot-body" id="chatbot-body">
+
+            <div class="message bot-message">
+                <p>Hello! How can I assist you today?</p>
+            </div>
+        </div>
+        <div class="chatbot-footer">
+            <input type="text" id="user-input" placeholder="Type your message here..." />
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for handling user input and sending messages
+        document.getElementById('send-btn').addEventListener('click', function() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== "") {
+                // Add user message to the chat
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user-message');
+                userMessage.innerHTML = `<p>${userInput}</p>`;
+                document.getElementById('chatbot-body').appendChild(userMessage);
+
+                // Clear the input field
+                document.getElementById('user-input').value = '';
+
+                // Simulate bot response (you can replace this with an API call)
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('message', 'bot-message');
+                    botMessage.innerHTML = `<p>This is a simulated response.</p>`;
+                    document.getElementById('chatbot-body').appendChild(botMessage);
+
+                    // Scroll to the bottom of the chat
+                    document.getElementById('chatbot-body').scrollTop = document.getElementById('chatbot-body').scrollHeight;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
